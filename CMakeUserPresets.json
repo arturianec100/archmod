@@ -1,0 +1,92 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "common",
+      "hidden": true,
+      "generator": "Ninja"
+    },
+    {
+      "name": "debug",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "native",
+      "hidden": true,
+      "inherits": ["common"],
+      "binaryDir": "${sourceDir}/build/native",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": {
+          "type": "FILEPATH",
+          "value": "clang"
+        },
+        "CMAKE_CXX_COMPILER": {
+          "type": "FILEPATH",
+          "value": "clang++"
+        },
+        "CMAKE_EXPORT_COMPILE_COMMANDS": {
+          "type": "BOOL",
+          "value": "TRUE"
+        }
+      }
+    },
+    {
+      "name": "emscripten",
+      "hidden": true,
+      "inherits": "common",
+      "binaryDir": "${sourceDir}/build/emscripten",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": {
+          "type": "FILEPATH",
+          "value": "/home/art/Portable/emsdk/upstream/emscripten/emcc"
+        },
+        "CMAKE_CXX_COMPILER": {
+          "type": "FILEPATH",
+          "value": "/home/art/Portable/emsdk/upstream/emscripten/em++"
+        },
+        "CMAKE_EXPORT_COMPILE_COMMANDS": {
+          "type": "BOOL",
+          "value": "TRUE"
+        },
+        "CMAKE_TOOLCHAIN_FILE": {
+          "type": "FILEPATH",
+          "value": "/home/art/Portable/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+        },
+        "CMAKE_CROSSCOMPILING_EMULATOR": {
+          "type": "FILEPATH",
+          "value": "/home/art/Portable/emsdk/node/20.18.0_64bit/bin/node"
+        }
+      }
+    },
+    {
+      "name": "debug-native",
+      "inherits": ["debug", "native"],
+      "binaryDir": "${sourceDir}/build/native/debug"
+    },
+    {
+      "name": "debug-emscripten",
+      "inherits": ["debug", "emscripten"],
+      "binaryDir": "${sourceDir}/build/emscripten/debug"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug-native",
+      "configurePreset": "debug-native"
+    },
+    {
+      "name": "debug-emscripten",
+      "configurePreset": "debug-emscripten"
+    }
+  ]
+}
