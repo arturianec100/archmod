@@ -34,4 +34,4 @@
 #CMake
 build/
 
-local.env
+CMakeUserPresets.json

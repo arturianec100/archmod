@@ -1,0 +1,5 @@
+function(am_set_common_properties target)
+  set_property(TARGET ${target} PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${target} PROPERTY CMAKE_CXX_STANDARD_REQUIRED YES)
+  set_property(TARGET ${target} PROPERTY LINKER_TYPE lld)
+endfunction()

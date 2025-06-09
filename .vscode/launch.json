@@ -3,5 +3,30 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
-  "configurations": []
+  "configurations": [
+    {
+      "name": "Debug rml_raw",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/native/debug/sandbox/gui/rml_raw/rml_raw",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/sandbox/gui/rml_raw/",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+          {
+              "description": "Включить автоматическое форматирование для gdb",
+              "text": "-enable-pretty-printing",
+              "ignoreFailures": true
+          },
+          {
+              "description": "Задать для варианта приложения дизассемблирования значение Intel",
+              "text": "-gdb-set disassembly-flavor intel",
+              "ignoreFailures": true
+          }
+      ]
+    }
+  ]
 }

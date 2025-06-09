@@ -80,6 +80,21 @@
     "typeindex": "cpp",
     "typeinfo": "cpp",
     "variant": "cpp",
-    "vec3f": "cpp"
+    "vec3f": "cpp",
+    "node": "cpp",
+    "drawable": "cpp",
+    "stateset": "cpp",
+    "filesystem": "cpp",
+    "format": "cpp",
+    "charconv": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "valarray": "cpp",
+    "__locale": "cpp",
+    "__verbose_abort": "cpp",
+    "ios": "cpp",
+    "locale": "cpp",
+    "queue": "cpp",
+    "stack": "cpp"
   }
 }
