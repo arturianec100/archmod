@@ -53,7 +53,11 @@ Rml::ElementDocument* initDocument(Rml::Context* context) {
 	container->SetProperty(Rml::PropertyId::Width, sz);
 	container->SetProperty(Rml::PropertyId::Height, sz);
 	container->SetProperty(Rml::PropertyId::Color, Rml::Property{Rml::Colourb{255, 255, 255}, Rml::Unit::COLOUR});
+#if defined RMLUI_PLATFORM_EMSCRIPTEN
+	container->SetProperty(Rml::PropertyId::FontFamily, Rml::Property{"rmlui-debugger-font", Rml::Unit::STRING});
+#else
 	container->SetProperty(Rml::PropertyId::FontFamily, Rml::Property{"roboto", Rml::Unit::STRING});
+#endif
 	container->SetProperty(Rml::PropertyId::FontSize, Rml::Property{40.0f, Rml::Unit::DP});
 	container->SetProperty(Rml::PropertyId::BackgroundColor, Rml::Property{Rml::Colourb{0, 128, 0}, Rml::Unit::COLOUR});
 	container->SetProperty("display", "block");
@@ -149,6 +153,7 @@ int main(int /*argc*/, char** /*argv*/) {
 		// if(counter % 1000 == 0) {
 		// 	std::cout << describeChildren(document, true) << std::endl;
 		// }
+		++counter;
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000 / 60));
 	}
 
