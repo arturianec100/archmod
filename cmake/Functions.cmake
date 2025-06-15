@@ -3,3 +3,8 @@ function(am_set_common_properties target)
   set_property(TARGET ${target} PROPERTY CMAKE_CXX_STANDARD_REQUIRED YES)
   set_property(TARGET ${target} PROPERTY LINKER_TYPE lld)
 endfunction()
+
+function(am_remove_headers_warnings target)
+  get_target_property(target_includes ${target} INTERFACE_INCLUDE_DIRECTORIES)
+  target_include_directories(${target} SYSTEM INTERFACE ${target_includes})
+endfunction()

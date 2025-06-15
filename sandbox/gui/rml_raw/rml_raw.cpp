@@ -65,8 +65,10 @@ Rml::ElementDocument* initDocument(Rml::Context* context) {
 	inner->SetProperty(Rml::PropertyId::MarginRight, mg);
 	inner->SetProperty(Rml::PropertyId::MarginTop, mg);
 	inner->SetProperty(Rml::PropertyId::MarginBottom, mg);
+	inner->SetProperty(Rml::PropertyId::Height, Rml::Property{60.0f, Rml::Unit::PERCENT});
 	inner->SetProperty(Rml::PropertyId::BackgroundColor, Rml::Property{Rml::Colourb{0, 0, 128}, Rml::Unit::COLOUR});
-	inner->SetProperty("display", "block");
+	inner->SetProperty(Rml::PropertyId::Display, Rml::Property{1, Rml::Unit::KEYWORD});
+	//inner->SetProperty("display", "block");
 
 	auto msg_node = doc->CreateTextNode("Hello, RmlUi world!");
 
@@ -144,9 +146,9 @@ int main(int /*argc*/, char** /*argv*/) {
 		context->Render();
 		Backend::PresentFrame();
 
-		if(counter % 1000 == 0) {
-			std::cout << describeChildren(document, true) << std::endl;
-		}
+		// if(counter % 1000 == 0) {
+		// 	std::cout << describeChildren(document, true) << std::endl;
+		// }
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000 / 60));
 	}
 

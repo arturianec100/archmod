@@ -28,7 +28,7 @@ namespace Shell {
 
   void LoadFonts() {
     for (const char* name : {"Roboto-Regular.ttf", "Roboto-Bold.ttf", "Roboto-Italic.ttf", "Roboto-BoldItalic.ttf"}) {
-      Rml::LoadFontFace(name);
+      Rml::LoadFontFace("res/" + std::string{name});
     }
   }
 
